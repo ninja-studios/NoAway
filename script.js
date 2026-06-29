@@ -1,4 +1,4 @@
-// 500+ ingredient list (shortened for now — I can generate full list)
+// Ingredient list (short sample — I can generate 500+ for you)
 const ingredients = [
     "Flour", "Milk", "Water", "Sugar", "Salt", "Butter", "Eggs", "Rice",
     "Chicken", "Beef", "Pasta", "Tomatoes", "Onions", "Garlic", "Olive Oil",
@@ -39,7 +39,7 @@ function addIngredient(name) {
     tile.innerHTML = `
         <div class="delete-x" onclick="deleteIngredient('${name}')">×</div>
         <strong>${name}</strong>
-        <input class="amount-input" id="amt-${name}" placeholder="Enter amount">
+        <input class="amount-input" id="amt-${name}" placeholder="Enter amount (e.g. 250 g)">
     `;
 
     grid.appendChild(tile);
@@ -103,8 +103,8 @@ function updateUnits() {
     });
 }
 
-// AI RECIPE GENERATION
-document.getElementById("generate").onclick = async () => {
+// OFFLINE RECIPE GENERATOR
+document.getElementById("generate").onclick = () => {
     const resultBox = document.getElementById("result");
 
     const formatted = selectedIngredients.map(name => {
@@ -112,24 +112,17 @@ document.getElementById("generate").onclick = async () => {
         return `${val} of ${name}`;
     }).join(", ");
 
-    resultBox.innerHTML = "Generating recipe...";
+    const recipe = `
+        <h3>Your NoAway Recipe</h3>
+        <p><strong>Ingredients:</strong> ${formatted}</p>
+        <p><strong>Instructions:</strong></p>
+        <ol>
+            <li>Combine all ingredients in a bowl.</li>
+            <li>Adjust seasoning to taste.</li>
+            <li>Cook on medium heat until done.</li>
+            <li>Serve warm and enjoy your NoAway creation.</li>
+        </ol>
+    `;
 
-    const response = await fetch(
-        "https://api-inference.huggingface.co/models/google/flan-t5-base",
-        {
-            method: "POST",
-            headers: {
-                "Authorization": "Bearer YOUR_API_KEY",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                inputs: `Create a recipe using: ${formatted}`
-            })
-        }
-    );
-
-    const data = await response.json();
-    const text = data[0]?.generated_text || "No recipe found.";
-
-    resultBox.innerHTML = `<p>${text}</p>`;
+    resultBox.innerHTML = recipe;
 };
