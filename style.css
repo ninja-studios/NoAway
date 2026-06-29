@@ -2,7 +2,7 @@ body {
     margin: 0;
     background: #000;
     color: #fff;
-    font-family: Arial, sans-serif;
+    font-family: 'League Spartan', sans-serif;
 }
 
 /* NAV BAR */
@@ -10,13 +10,12 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 20px 40px;
-    background: #000;
 }
 
 .logo {
     color: #00ff66;
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 32px;
+    font-weight: 900;
     text-shadow: 0 0 10px #00ff66;
 }
 
@@ -24,7 +23,7 @@ nav a {
     color: #ccc;
     margin-left: 20px;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 nav a:hover {
@@ -35,7 +34,6 @@ nav a:hover {
 .hero {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 60px;
 }
 
@@ -55,20 +53,99 @@ nav a:hover {
     margin-bottom: 20px;
 }
 
-/* INPUT + BUTTON */
-textarea {
+/* SEARCH BOX */
+#searchBox {
     width: 100%;
-    height: 120px;
+    padding: 12px;
     background: #111;
-    color: #00ff66;
     border: 2px solid #00ff66;
-    padding: 10px;
     border-radius: 8px;
+    color: #00ff66;
+    font-size: 18px;
+    margin-bottom: 10px;
     box-shadow: 0 0 10px #00ff66;
-    margin-bottom: 20px;
 }
 
-button {
+/* SEARCH RESULTS */
+#searchResults {
+    background: #111;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.search-item {
+    padding: 10px;
+    border-bottom: 1px solid #222;
+    cursor: pointer;
+}
+
+.search-item:hover {
+    background: #00ff66;
+    color: #000;
+}
+
+/* SELECTED INGREDIENT GRID */
+#selectedGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.ingredient-tile {
+    background: #111;
+    border: 2px solid #00ff66;
+    border-radius: 8px;
+    padding: 10px;
+    position: relative;
+    box-shadow: 0 0 10px #00ff66;
+}
+
+.delete-x {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    cursor: pointer;
+    color: #ff0033;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.amount-input {
+    width: 100%;
+    margin-top: 10px;
+    padding: 6px;
+    background: #222;
+    border: 1px solid #00ff66;
+    border-radius: 6px;
+    color: #00ff66;
+}
+
+/* UNIT TOGGLE */
+.unit-toggle {
+    margin-top: 20px;
+}
+
+.unit-toggle button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    background: #111;
+    border: 2px solid #00ff66;
+    color: #00ff66;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.unit-toggle .active {
+    background: #00ff66;
+    color: #000;
+}
+
+/* GENERATE BUTTON */
+button#generate {
+    margin-top: 20px;
     padding: 12px 25px;
     background: #00ff66;
     color: #000;
@@ -77,10 +154,6 @@ button {
     font-size: 18px;
     cursor: pointer;
     box-shadow: 0 0 10px #00ff66;
-}
-
-button:hover {
-    background: #00cc55;
 }
 
 /* RESULT BOX */
