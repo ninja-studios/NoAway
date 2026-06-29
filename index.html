@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>NoAway – AI Leftover Recipes</title>
     <link rel="stylesheet" href="style.css">
+
+    <!-- Free Marine-Black style font -->
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -11,7 +14,7 @@
         <div class="logo">NoAway</div>
         <nav>
             <a href="#">Home</a>
-            <a href="#">About</a>
+            <a href="#">Ingredients</a>
             <a href="#">Recipes</a>
             <a href="#">Help</a>
         </nav>
@@ -22,9 +25,22 @@
             <h1>Turn leftovers into recipes</h1>
             <p>No waste. NoAway.</p>
 
-            <textarea id="leftovers" placeholder="List your leftovers here..."></textarea>
-            <button id="generate">Generate Recipe</button>
+            <!-- Search box -->
+            <input id="searchBox" type="text" placeholder="Search ingredients…">
 
+            <!-- Ingredient results -->
+            <div id="searchResults"></div>
+
+            <!-- Selected ingredients grid -->
+            <div id="selectedGrid"></div>
+
+            <!-- Measurement toggle -->
+            <div class="unit-toggle">
+                <button id="metricBtn" class="active">Metric</button>
+                <button id="imperialBtn">Imperial</button>
+            </div>
+
+            <button id="generate">Generate Recipe</button>
             <div id="result"></div>
         </div>
 
