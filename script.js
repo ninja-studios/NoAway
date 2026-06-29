@@ -103,8 +103,8 @@ function updateUnits() {
     });
 }
 
-// OFFLINE RECIPE GENERATOR
-document.getElementById("generate").onclick = () => {
+// ⭐ REAL CHATGPT RECIPE GENERATION THROUGH CLOUDFLARE WORKER
+document.getElementById("generate").onclick = async () => {
     const resultBox = document.getElementById("result");
 
     const formatted = selectedIngredients.map(name => {
@@ -112,17 +112,24 @@ document.getElementById("generate").onclick = () => {
         return `${val} of ${name}`;
     }).join(", ");
 
-    const recipe = `
-        <h3>Your NoAway Recipe</h3>
-        <p><strong>Ingredients:</strong> ${formatted}</p>
-        <p><strong>Instructions:</strong></p>
-        <ol>
-            <li>Combine all ingredients in a bowl.</li>
-            <li>Adjust seasoning to taste.</li>
-            <li>Cook on medium heat until done.</li>
-            <li>Serve warm and enjoy your NoAway creation.</li>
-        </ol>
-    `;
+    resultBox.innerHTML = "Generating recipe...";
 
-    resultBox.innerHTML = recipe;
+    try {
+        const response = await fetch("https://noaway.jackninja73.workers.dev/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                prompt: `Create a detailed recipe using: ${formatted}`
+            })
+        });
+
+        const data = await response.json();
+        const text = data.choices[0].message.content;
+
+        resultBox.innerHTML = `<p>${text}</p>`;
+    } catch (err) {
+        resultBox.innerHTML = "<p style='color:red;'>Error: AI request failed.</p>";
+    }
 };
