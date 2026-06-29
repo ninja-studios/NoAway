@@ -5,16 +5,34 @@
     <title>NoAway – AI Leftover Recipes</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>NoAway</h1>
-    <p class="tagline">Turn leftovers into recipes. No waste. NoAway.</p>
+    <header class="nav">
+        <div class="logo">NoAway</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Recipes</a>
+            <a href="#">Help</a>
+        </nav>
+    </header>
 
-    <textarea id="leftovers" placeholder="List your leftovers here..."></textarea>
-    <button id="generate">Generate Recipe</button>
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Turn leftovers into recipes</h1>
+            <p>No waste. NoAway.</p>
 
-    <div id="result"></div>
+            <textarea id="leftovers" placeholder="List your leftovers here..."></textarea>
+            <button id="generate">Generate Recipe</button>
+
+            <div id="result"></div>
+        </div>
+
+        <div class="hero-image">
+            <div class="neon-circle"></div>
+        </div>
+    </section>
 
     <script src="script.js"></script>
 </body>
 </html>
-
