@@ -23,4 +23,3 @@ document.getElementById("generate").onclick = async () => {
 
     resultBox.innerHTML = `<p class="neutral">${text}</p>`;
 };
-
