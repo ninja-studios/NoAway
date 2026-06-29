@@ -115,7 +115,7 @@ document.getElementById("generate").onclick = async () => {
     resultBox.innerHTML = "Generating recipe...";
 
     try {
-        const response = await fetch("https://noaway.jackninja73.workers.dev/", {
+        const response = await fetch("https://noaway.jackninja73.workers.dev", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
